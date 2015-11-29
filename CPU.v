@@ -29,9 +29,9 @@ Control Control(
     .RegWrite_o (Registers.RegWrite_i)
 );
 
-assign Jump_addr = {Add_PC.data_o[31:28], {inst[25:0], 2'b00}};
+assign Jump_addr = {{Add_PC.data_o[31:28], inst[25:0]}, 2'b00};
 
-MUX MUX_PC_Jump(
+MUX32 MUX_PC_Jump(
 	.data1_i	(MUX_PCSrc.data_o),
 	.data2_i	(Jump_addr),
 	.select_i	(Control.Jump_o),
@@ -77,10 +77,25 @@ Registers Registers(
     .RSaddr_i   (inst[25:21]),
     .RTaddr_i   (inst[20:16]),
     .RDaddr_i   (MUX_RegDst.data_o), 
-    .RDdata_i   (ALU.data_o),
+    .RDdata_i   (MUX_Regdata.data_o),
     .RegWrite_i (/*  */), 
     .RSdata_o   (/*  */), 
     .RTdata_o   (/*  */) 
+);
+
+Data_Memory Data_Memory(
+	.MemWrite_i	(Control.MemWrite_o),
+    .addr_i		(ALU.data_o),
+	.MemRead_i	(Control.MemRead_o),
+	.data_i		(Registers.RTdata_o),
+	.data_o		()
+);
+
+MUX32 MUX_Regdata(
+	.data1_i	(ALU.data_o),
+	.data2_i	(Data_Memory.data_o),
+	.select_i	(Control.MemtoReg_o),
+	.data_o		()
 );
 
 MUX5 MUX_RegDst(
