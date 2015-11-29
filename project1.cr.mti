@@ -7,6 +7,13 @@ Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
 Top level modules:
 	MUX5
 
+} {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Sign_Extend.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Sign_Extend.v
+Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module Signed_Extend
+
+Top level modules:
+	Signed_Extend
+
 } {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Adder.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Adder.v
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
 -- Compiling module Adder
@@ -14,19 +21,12 @@ Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
 Top level modules:
 	Adder
 
-} {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/CPU.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/CPU.v
+} {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Registers.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Registers.v
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
--- Compiling module CPU
+-- Compiling module Registers
 
 Top level modules:
-	CPU
-
-} {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Sign_Extend.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Sign_Extend.v
-Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
--- Compiling module Signed_Extend
-
-Top level modules:
-	Signed_Extend
+	Registers
 
 } {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/testbench.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/testbench.v
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014

@@ -36,9 +36,9 @@ always@(data1_i or data2_i or ALUCtrl_i) begin
 		end
 	endcase
 	if(data_o == 32'b0)
-		Zero_o = 1'b1;
+		Zero_o = 1;
 	else
-		Zero_o = 1'b0;
+		Zero_o = 0;
 end
 
 endmodule
