@@ -1,7 +1,7 @@
 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX5.v {2 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX5.v
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
 -- Compiling module MUX5
-** Warning: C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX5.v(22): (vlog-2283) Extra semicolon in $unit (global) scope.
+** Warning: C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX5.v(21): (vlog-2283) Extra semicolon in $unit (global) scope.
 
 
 Top level modules:
@@ -13,13 +13,6 @@ Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
 
 Top level modules:
 	TestBench
-
-} {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/CPU.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/CPU.v
-Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
--- Compiling module CPU
-
-Top level modules:
-	CPU
 
 } {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Sign_Extend.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Sign_Extend.v
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
@@ -59,18 +52,11 @@ Top level modules:
 } {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX32.v {2 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX32.v
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
 -- Compiling module MUX32
-** Warning: C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX32.v(22): (vlog-2283) Extra semicolon in $unit (global) scope.
+** Warning: C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX32.v(21): (vlog-2283) Extra semicolon in $unit (global) scope.
 
 
 Top level modules:
 	MUX32
-
-} {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Control.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Control.v
-Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
--- Compiling module Control
-
-Top level modules:
-	Control
 
 } {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Data_Memory.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Data_Memory.v
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
@@ -85,5 +71,12 @@ Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
 
 Top level modules:
 	ALU
+
+} {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/PC.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/PC.v
+Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module PC
+
+Top level modules:
+	PC
 
 } {} {}}

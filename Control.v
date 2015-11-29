@@ -35,6 +35,7 @@ always@(Op_i) begin
 			MemtoReg_o = 0;
 			RegWrite_o = 1;
 			MemWrite_o = 0;
+			MemRead_o = 0;
 			Branch_o = 0;
 			Jump_o = 0;
 			ALUOp_o  = 2'b11;
@@ -45,6 +46,7 @@ always@(Op_i) begin
 			MemtoReg_o = 0;
 			RegWrite_o = 1;
 			MemWrite_o = 0;
+			MemRead_o = 0;
 			Branch_o = 0;
 			Jump_o = 0;
 			ExtOp_o = 0;
@@ -56,6 +58,7 @@ always@(Op_i) begin
 			MemtoReg_o = 0;
 			RegWrite_o = 1;
 			MemWrite_o = 0;
+			MemRead_o = 0;
 			Branch_o = 0;
 			Jump_o = 0;
 			ExtOp_o = 1;
@@ -64,6 +67,7 @@ always@(Op_i) begin
 		`j		: begin
 			RegWrite_o = 0;
 			MemWrite_o = 0;
+			MemRead_o = 0;
 			Branch_o = 0;
 			Jump_o = 1;
 		end
@@ -71,6 +75,7 @@ always@(Op_i) begin
 			ALUSrc_o = 0;
 			RegWrite_o = 0;
 			MemWrite_o = 0;
+			MemRead_o = 0;
 			Branch_o = 1;
 			Jump_o = 0;
 			ALUOp_o  = 2'b01;
@@ -81,6 +86,7 @@ always@(Op_i) begin
 			MemtoReg_o = 1;
 			RegWrite_o = 1;
 			MemWrite_o = 0;
+			MemRead_o = 1;
 			Branch_o = 0;
 			Jump_o = 0;
 			ExtOp_o = 1;
@@ -90,6 +96,7 @@ always@(Op_i) begin
 			ALUSrc_o = 1;
 			RegWrite_o = 0;
 			MemWrite_o = 1;
+			MemRead_o = 0;
 			Branch_o = 0;
 			Jump_o = 0;
 			ExtOp_o = 1;

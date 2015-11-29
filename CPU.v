@@ -1,16 +1,15 @@
 module CPU
 (
-    clk_i, 
-    rst_i,
+    clk_i,
     start_i
 );
 
 // Ports
 input               clk_i;
-input               rst_i;
 input               start_i;
 
-wire	[31:0] inst_addr, inst;
+wire	[31:0] inst_addr, inst, Jump_addr;
+wire 	PCSrc;
 
 assign inst_addr = PC.pc_o;
 assign inst = Instruction_Memory.instr_o;
@@ -61,7 +60,6 @@ Adder Add_PC(
 
 PC PC(
     .clk_i      (clk_i),
-    .rst_i      (rst_i),
     .start_i    (start_i),
     .pc_i       (MUX_PC_Jump.data_o),
     .pc_o       (/*  */)
