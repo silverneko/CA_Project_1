@@ -86,11 +86,4 @@ Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
 Top level modules:
 	ALU
 
-} {} {}} C:/Users/silvernegi/Documents/GitHub/CA_Project_1/PC.v {1 {vlog -work work -stats=none C:/Users/silvernegi/Documents/GitHub/CA_Project_1/PC.v
-Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
--- Compiling module PC
-
-Top level modules:
-	PC
-
 } {} {}}

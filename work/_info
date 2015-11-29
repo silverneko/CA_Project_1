@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/altera/15.0
 vAdder
-Z0 !s110 1448790249
+Z0 !s110 1448791189
 !i10b 1
 !s100 ok;X94_02o7i1@3JiMHj>1
 IOc4ETd6z@nM2mbcYI4h2X2
@@ -23,7 +23,7 @@ Z3 OV;L;10.3d;59
 r1
 !s85 0
 31
-!s108 1448790249.528000
+!s108 1448791189.570000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Adder.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Adder.v|
 !i113 1
@@ -44,7 +44,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790249.561000
+!s108 1448791189.608000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/ALU.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/ALU.v|
 !i113 1
@@ -65,7 +65,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790249.626000
+!s108 1448791189.676000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/ALU_Control.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/ALU_Control.v|
 !i113 1
@@ -86,7 +86,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790249.685000
+!s108 1448791189.724000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Control.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Control.v|
 !i113 1
@@ -95,11 +95,11 @@ n@control
 vCPU
 R0
 !i10b 1
-!s100 _;A0485XU@iV0KzV6Yz>_0
-I<2VNG2iJVO?>Oc7jkIogR2
+!s100 B5OV>ZL^8b9Y4CI?O2AjC3
+I1jTZc7SzAJAU_BNbgX]RS2
 R1
 R2
-w1448789877
+w1448790859
 8C:/Users/silvernegi/Documents/GitHub/CA_Project_1/CPU.v
 FC:/Users/silvernegi/Documents/GitHub/CA_Project_1/CPU.v
 L0 1
@@ -107,20 +107,20 @@ R3
 r1
 !s85 0
 31
-!s108 1448790249.734000
+!s108 1448791189.780000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/CPU.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/CPU.v|
 !i113 1
 R4
 n@c@p@u
 vData_Memory
-Z5 !s110 1448790250
+Z5 !s110 1448791190
 !i10b 1
-!s100 1PW`6L?]2D14AN3=RiDU93
-IJNkfCW5`1VO`H=NN5bN]R0
+!s100 GPCU9m2`EIO`:^2jOeLV52
+IYhQ=_k<fjUDFK5Q1Ulo[i1
 R1
 R2
-w1448789960
+w1448790895
 8C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Data_Memory.v
 FC:/Users/silvernegi/Documents/GitHub/CA_Project_1/Data_Memory.v
 L0 1
@@ -128,7 +128,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790250.243000
+!s108 1448791190.203000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Data_Memory.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Data_Memory.v|
 !i113 1
@@ -149,7 +149,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790249.789000
+!s108 1448791189.833000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Instruction_Memory.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Instruction_Memory.v|
 !i113 1
@@ -170,7 +170,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790249.960000
+!s108 1448791189.942000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX32.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX32.v|
 !i113 1
@@ -191,20 +191,20 @@ R3
 r1
 !s85 0
 31
-!s108 1448790249.834000
+!s108 1448791189.886000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX5.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/MUX5.v|
 !i113 1
 R4
 n@m@u@x5
 vPC
-R5
+R0
 !i10b 1
-!s100 X`<Rd`8_mgCgl=Y93?IgI0
-ISLDl6J;BnQO6H5C[[ghef1
+!s100 zkl5LGT^4[i<LS7XR4[9B1
+Io;8MiXoBeE?H1LEIkk0Ri1
 R1
 R2
-w1335235292
+w1448791185
 8C:/Users/silvernegi/Documents/GitHub/CA_Project_1/PC.v
 FC:/Users/silvernegi/Documents/GitHub/CA_Project_1/PC.v
 L0 1
@@ -212,7 +212,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790250.034000
+!s108 1448791189.993000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/PC.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/PC.v|
 !i113 1
@@ -233,7 +233,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790250.085000
+!s108 1448791190.044000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Registers.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Registers.v|
 !i113 1
@@ -254,7 +254,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790250.134000
+!s108 1448791190.092000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Sign_Extend.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/Sign_Extend.v|
 !i113 1
@@ -275,7 +275,7 @@ R3
 r1
 !s85 0
 31
-!s108 1448790250.191000
+!s108 1448791190.148000
 !s107 C:/Users/silvernegi/Documents/GitHub/CA_Project_1/testbench.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/silvernegi/Documents/GitHub/CA_Project_1/testbench.v|
 !i113 1

@@ -29,7 +29,7 @@ Control Control(
     .RegWrite_o (Registers.RegWrite_i)
 );
 
-assign Jump_addr = {{Add_PC.data_o[31:28], inst[25:0]}, 2'b00};
+assign Jump_addr = {Add_PC.data_o[31:28], inst[25:0], 2'b00};
 
 MUX32 MUX_PC_Jump(
 	.data1_i	(MUX_PCSrc.data_o),
