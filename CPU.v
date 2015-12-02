@@ -136,5 +136,16 @@ ALU_Control ALU_Control(
     .ALUCtrl_o  (/*  */)
 );
 
+Fowarding_Unit Fowarding_Unit(
+    .EXRegRs_i      (/*  */),
+    .EXRegRt_i      (/*  */),
+    .MEMRegRd_i     (/*  */),
+    .MEMRegWrite_i  (/*  */),
+    .WBRegRd_i      (/*  */),
+    .WBRegWrite_i   (/*  */),
+    .FowardA_o      (/*  */),
+    .FowardB_o      (/*  */)
+);
+
 endmodule
 
