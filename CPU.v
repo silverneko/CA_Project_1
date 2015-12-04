@@ -148,37 +148,50 @@ Fowarding_Unit Fowarding_Unit(
 );
 
 IF_ID IF_ID(
-    .Flush_i    (/*  */),
-    .Clock_i    (/*  */),
-    .IFID_i     (/*  */),
-    .PC4_i      (/*  */),
-    .Inst_i     (/*  */),
-    .PC4_o      (/*  */),
-    .Inst_o     (/*  */)
+    .Flush_i (/*  */),
+    .Clock_i (/*  */),
+    .IFID_i  (/*  */),
+    .PC4_i   (/*  */),
+    .Inst_i  (/*  */),
+    .PC4_o   (/*  */),
+    .Inst_o  (/*  */)
 );
 
 ID_EX ID_EX(
-    .Clock_i         (/*  */),
-    .WB_i            (/*  */),
-    .M_i           (/*  */),
-    .EX_i            (/*  */),
-    .Data1_i         (/*  */),
-    .Data2_i         (/*  */),
-    .Immediate_i     (/*  */),
-    .RegRs_i         (/*  */),
-    .RegRt_i         (/*  */),
-    .RegRd_i         (/*  */),
-    .WB_o            (/*  */),
-    .M_o           (/*  */),
-    .EX_o            (/*  */),
-    .Data1_o         (/*  */),
-    .Data2_o         (/*  */),
-    .Immediate_o     (/*  */),
-    .RegRs_o         (/*  */),
-    .RegRt_o         (/*  */),
-    .RegRd_o         (/*  */)
+    .Clock_i     (/*  */),
+    .WB_i        (/*  */),
+    .M_i         (/*  */),
+    .EX_i        (/*  */),
+    .Data1_i     (/*  */),
+    .Data2_i     (/*  */),
+    .Immediate_i (/*  */),
+    .RegRs_i     (/*  */),
+    .RegRt_i     (/*  */),
+    .RegRd_i     (/*  */),
+    .WB_o        (/*  */),
+    .M_o         (/*  */),
+    .EX_o        (/*  */),
+    .Data1_o     (/*  */),
+    .Data2_o     (/*  */),
+    .Immediate_o (/*  */),
+    .RegRs_o     (/*  */),
+    .RegRt_o     (/*  */),
+    .RegRd_o     (/*  */)
 );
 
+EX_MEM EX_MEM(
+    .Clock_i     (/*  */),
+    .WB_i        (/*  */),
+    .M_i         (/*  */),
+    .ALU_i       (/*  */),
+    .RegRd_i     (/*  */),
+    .WriteData_i (/*  */),
+    .WB_o        (/*  */),
+    .M_o         (/*  */),
+    .ALU_o       (/*  */),
+    .RegRd_o     (/*  */),
+    .WriteData_o (/*  */)
+);
 
 endmodule
 
