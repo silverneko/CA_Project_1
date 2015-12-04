@@ -147,5 +147,15 @@ Fowarding_Unit Fowarding_Unit(
     .FowardB_o      (/*  */)
 );
 
+IF_ID IF_ID(
+    .Flush_i    (/*  */),
+    .Clock_i    (/*  */),
+    .IFID_i     (/*  */),
+    .PC4_i      (/*  */),
+    .Inst_i     (/*  */),
+    .PC4_o      (/*  */),
+    .Inst_o     (/*  */)
+);
+
 endmodule
 
