@@ -160,7 +160,7 @@ IF_ID IF_ID(
 ID_EX ID_EX(
     .Clock_i         (/*  */),
     .WB_i            (/*  */),
-    .MEM_i           (/*  */),
+    .M_i           (/*  */),
     .EX_i            (/*  */),
     .Data1_i         (/*  */),
     .Data2_i         (/*  */),
@@ -169,7 +169,7 @@ ID_EX ID_EX(
     .RegRt_i         (/*  */),
     .RegRd_i         (/*  */),
     .WB_o            (/*  */),
-    .MEM_o           (/*  */),
+    .M_o           (/*  */),
     .EX_o            (/*  */),
     .Data1_o         (/*  */),
     .Data2_o         (/*  */),
