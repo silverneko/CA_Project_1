@@ -193,5 +193,17 @@ EX_MEM EX_MEM(
     .WriteData_o (/*  */)
 );
 
+MEM_WB MEM_WB(
+    .Clock_i (/*  */),
+    .WB_i    (/*  */),
+    .MEM_i   (/*  */),
+    .ALU_i   (/*  */),
+    .RegRd_i (/*  */),
+    .WB_o    (/*  */),
+    .MEM_o   (/*  */),
+    .ALU_o   (/*  */),
+    .RegRd_o (/*  */)
+);
+
 endmodule
 
