@@ -157,5 +157,28 @@ IF_ID IF_ID(
     .Inst_o     (/*  */)
 );
 
+ID_EX ID_EX(
+    .Clock_i         (/*  */),
+    .WB_i            (/*  */),
+    .MEM_i           (/*  */),
+    .EX_i            (/*  */),
+    .Data1_i         (/*  */),
+    .Data2_i         (/*  */),
+    .Immediate_i     (/*  */),
+    .RegRs_i         (/*  */),
+    .RegRt_i         (/*  */),
+    .RegRd_i         (/*  */),
+    .WB_o            (/*  */),
+    .MEM_o           (/*  */),
+    .EX_o            (/*  */),
+    .Data1_o         (/*  */),
+    .Data2_o         (/*  */),
+    .Immediate_o     (/*  */),
+    .RegRs_o         (/*  */),
+    .RegRt_o         (/*  */),
+    .RegRd_o         (/*  */)
+);
+
+
 endmodule
 
