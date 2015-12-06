@@ -63,7 +63,7 @@ Instruction_Memory Instruction_Memory(
 // IF
 
 IF_ID IF_ID(
-    .Flush_i (/*  */),
+    .Flush_i (MUX_PC_Branch.select_i | MUX_PC_Jump.select_i),
     .Clock_i (clk_i),
     .IFID_i  (Hazard_Detection.IFID_o),
     .PC4_i   (pcAdd4),
@@ -102,6 +102,16 @@ Signed_Extend Signed_Extend(
     .data_i     (inst[15:0]),
     .ExtOp_i	(Control.ExtOp_o),
     .data_o     (/*  */)
+);
+
+Hazard_Detection Hazard_Detection(
+    .IFIDRegRs_i    (inst[25:21]),
+    .IFIDRegRt_i    (inst[20:16]),
+    .IDEXMemRead_i  (ID_EX.M_o[1]),
+    .IDEXRegRt_i    (ID_EX.RegRt_o),
+    .pcWrite_o      (),
+    .IFID_o         (),
+    .MuxSelect_o    ()
 );
 
 MUX32 ID_EX_Flush(
@@ -248,19 +258,6 @@ MUX32 MUX_Regdata(
 	.select_i	(MEM_WB.WB_o[0]),
 	.data_o		()
 );
-
-//
-
-Hazard_Detection Hazard_Detection(
-    .IFIDRegRs_i    (inst[25:21]),
-    .IFIDRegRt_i    (inst[20:16]),
-    .IDEXMemRead_i  (ID_EX.M_o),
-    .IDEXRegRt_i    (ID_EX.RegRt_o),
-    .pcWrite_o      (),
-    .IFID_o         (),
-    .MuxSelect_o    ()
-);
-
 // WB
 endmodule
 

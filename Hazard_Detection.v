@@ -26,7 +26,7 @@ begin
     begin
         pcWrite_o = 1;
         IFID_o = 1;
-        MuxSelect_o = 1;
+        MuxSelect_o = 0;
     end
 end
 
