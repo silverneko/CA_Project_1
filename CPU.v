@@ -92,7 +92,7 @@ Registers Registers(
     .clk_i      (clk_i),
     .RSaddr_i   (inst[25:21]),
     .RTaddr_i   (inst[20:16]),
-    .RDaddr_i   (), 
+    .RDaddr_i   (MEM_WB.RegRd_o), 
     .RDdata_i   (MUX_Regdata.data_o),
     .RegWrite_i (MEM_WB.WB_o[1]), 
     .RSdata_o   (/*  */), 
@@ -233,8 +233,9 @@ EX_MEM EX_MEM(
 
 // MEM
 Data_Memory Data_Memory(
+  .Clock_i (clk_i),
 	.MemWrite_i	(EX_MEM.M_o[0]),
-    .addr_i		  (EX_MEM.ALU_o),
+  .addr_i		  (EX_MEM.ALU_o),
 	.MemRead_i	(EX_MEM.M_o[1]),
 	.data_i		  (EX_MEM.WriteData_o),
 	.data_o		  ()
