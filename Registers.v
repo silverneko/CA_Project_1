@@ -33,8 +33,9 @@ end
 
 // Write Data   
 always@(posedge clk_i) begin
-    if(RegWrite_i)
-        register[RDaddr_i] = RDdata_i;
+  #(50/4)
+  if(RegWrite_i)
+    register[RDaddr_i] = RDdata_i;
 end
    
 endmodule 
