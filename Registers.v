@@ -27,14 +27,14 @@ reg		[31:0]		RTdata_o;
 
 // Read Data      
 always@(negedge clk_i) begin
-	RSdata_o <= register[RSaddr_i];
-	RTdata_o <= register[RTaddr_i];
+	RSdata_o = register[RSaddr_i];
+	RTdata_o = register[RTaddr_i];
 end
 
 // Write Data   
 always@(posedge clk_i) begin
     if(RegWrite_i)
-        register[RDaddr_i] <= RDdata_i;
+        register[RDaddr_i] = RDdata_i;
 end
    
 endmodule 

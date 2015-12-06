@@ -117,7 +117,7 @@ Hazard_Detection Hazard_Detection(
 
 MUX32 ID_EX_Flush(
     .data1_i    ({24'b0, Control.RegWrite_o, Control.MemtoReg_o, Control.MemRead_o, Control.MemWrite_o, Control.ALUSrc_o, Control.ALUOp_o, Control.RegDst_o}),
-                /* WB[1]               WB[0]               M[1]                M[0]                 EX[3]           EX[2:1]            EX[0] */ 
+                            /* WB[1]               WB[0]               M[1]                M[0]                 EX[3]           EX[2:1]            EX[0] */ 
     .data2_i    (32'b0),
     .select_i   (Hazard_Detection.MuxSelect_o),
     .data_o     ()
