@@ -14,17 +14,17 @@ module EX_MEM(
 
 input Clock_i;
 input [1:0] WB_i;
-input [2:0] M_i;
+input [1:0] M_i;
 input [4:0] RegRd_i;
 input [31:0] ALU_i, WriteData_i;
 
 output [1:0] WB_o;
-output [2:0] M_o;
+output [1:0] M_o;
 output [4:0] RegRd_o;
 output [31:0] ALU_o, WriteData_o;
 
 reg [1:0] WB_o;
-reg [2:0] M_o;
+reg [1:0] M_o;
 reg [4:0] RegRd_o;
 reg [31:0] ALU_o, WriteData_o;
 

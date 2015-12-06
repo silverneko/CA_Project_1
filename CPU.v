@@ -25,6 +25,7 @@ ALU Data_Eq(
     .data1_i    (Registers.RSdata_o),
     .data2_i    (Registers.RTdata_o),
     .ALUCtrl_i  (3'b110), // substract
+    .data_o     (),
     .Zero_o     (/*  */)
 );
 
@@ -36,7 +37,7 @@ MUX32 MUX_PC_Branch(
 );
 
 Adder Add_PC_Branch(
-	.data1_i	(IF_ID.pc_o),
+	.data1_i	(IF_ID.PC4_o),
 	.data2_i	({Signed_Extend.data_o[29:0], 2'b00}),
 	.data_o		(Branch_addr)
 );
@@ -115,12 +116,14 @@ Hazard_Detection Hazard_Detection(
 );
 
 MUX32 ID_EX_Flush(
-    .data1_i    ({Control.RegWrite_o, Control.MemtoReg_o, Control.MemRead_o, Control.MemWrite_o, Control.ALUSrc_o, Control.ALUOp_o, Control.RegDst_o}),
+    .data1_i    ({24'b0, Control.RegWrite_o, Control.MemtoReg_o, Control.MemRead_o, Control.MemWrite_o, Control.ALUSrc_o, Control.ALUOp_o, Control.RegDst_o}),
                 /* WB[1]               WB[0]               M[1]                M[0]                 EX[3]           EX[2:1]            EX[0] */ 
     .data2_i    (32'b0),
     .select_i   (Hazard_Detection.MuxSelect_o),
-    .data_o     ({ID_EX.WB_i, ID_EX.M_i, ID_EX.EX_i})
+    .data_o     ()
 );
+
+assign  {ID_EX.WB_i, ID_EX.M_i, ID_EX.EX_i} = ID_EX_Flush.data_o[7:0];
 // ID
 
 ID_EX ID_EX(
