@@ -17,15 +17,13 @@ output  [31:0]      pc_o;
 // Wires & Registers
 reg     [31:0]      pc_o;
 
+always@(negedge start_i) begin
+  pc_o <= 32'b0;
+end
 
-always@(posedge clk_i or negedge start_i) begin
-    if(~start_i) begin
-        pc_o = 32'b0;
-    end
-    else begin
-        if(pcWrite_i)
-          pc_o = pc_i;
-    end
+always@(posedge clk_i) begin
+    if(start_i & pcWrite_i)
+      pc_o = pc_i;
 end
 
 endmodule
