@@ -8,11 +8,7 @@ module CPU
 input               clk_i;
 input               start_i;
 
-wire	[31:0] inst_addr, inst;
-
-wire	[4:0]	RSaddr, RTaddr, RDaddr;
-assign	RSaddr = inst[25:21];
-assign	RTaddr = inst[20:16];
+wire	[31:0]  inst;
 
 wire	[31:0] 	pcAdd4, pc_i, Jump_addr, Branch_addr;
 assign 	Jump_addr = {Add_PC.data_o[31:28], inst[25:0], 2'b00};
@@ -46,7 +42,7 @@ Adder Add_PC_Branch(
 );
 
 Adder Add_PC(
-    .data1_i   	(inst_addr),
+    .data1_i   	(PC.pc_o),
     .data2_i  	(32'b100),
     .data_o     (pcAdd4)
 );
@@ -56,12 +52,12 @@ PC PC(
     .start_i    (start_i),
     .pcWrite_i  (/*  */),
     .pc_i       (pc_i),
-    .pc_o       (inst_addr)
+    .pc_o       ()
 );
 
 
 Instruction_Memory Instruction_Memory(
-    .addr_i     (inst_addr), 
+    .addr_i     (PC.pc_o), 
     .instr_o    ()
 );
 // IF
@@ -93,8 +89,8 @@ Control Control(
 
 Registers Registers(
     .clk_i      (clk_i),
-    .RSaddr_i   (RSaddr),
-    .RTaddr_i   (RTaddr),
+    .RSaddr_i   (inst[25:21]),
+    .RTaddr_i   (inst[20:16]),
     .RDaddr_i   (), 
     .RDdata_i   (MUX_Regdata.data_o),
     .RegWrite_i (MEM_WB.WB_o[1]), 
@@ -107,7 +103,6 @@ Signed_Extend Signed_Extend(
     .ExtOp_i	(Control.ExtOp_o),
     .data_o     (/*  */)
 );
-
 
 MUX32 ID_EX_Flush(
     .data1_i    ({Control.RegWrite_o, Control.MemtoReg_o, Control.MemRead_o, Control.MemWrite_o, Control.ALUSrc_o, Control.ALUOp_o, Control.RegDst_o}),
