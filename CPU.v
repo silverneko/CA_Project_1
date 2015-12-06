@@ -50,7 +50,7 @@ Adder Add_PC(
 PC PC(
     .clk_i      (clk_i),
     .start_i    (start_i),
-    .pcWrite_i  (/*  */),
+    .pcWrite_i  (Hazard_Detection.pcWrite_o),
     .pc_i       (pc_i),
     .pc_o       ()
 );
@@ -65,7 +65,7 @@ Instruction_Memory Instruction_Memory(
 IF_ID IF_ID(
     .Flush_i (/*  */),
     .Clock_i (clk_i),
-    .IFID_i  (/*  */),
+    .IFID_i  (Hazard_Detection.IFID_o),
     .PC4_i   (pcAdd4),
     .Inst_i  (Instruction_Memory.instr_o),
     .PC4_o   (/* I think this is for exception control module */),
@@ -108,7 +108,7 @@ MUX32 ID_EX_Flush(
     .data1_i    ({Control.RegWrite_o, Control.MemtoReg_o, Control.MemRead_o, Control.MemWrite_o, Control.ALUSrc_o, Control.ALUOp_o, Control.RegDst_o}),
                 /* WB[1]               WB[0]               M[1]                M[0]                 EX[3]           EX[2:1]            EX[0] */ 
     .data2_i    (32'b0),
-    .select_i   (/* Flush or not */),
+    .select_i   (Hazard_Detection.MuxSelect_o),
     .data_o     ({ID_EX.WB_i, ID_EX.M_i, ID_EX.EX_i})
 );
 // ID
@@ -221,7 +221,7 @@ EX_MEM EX_MEM(
 // MEM
 Data_Memory Data_Memory(
 	.MemWrite_i	(EX_MEM.M_o[0]),
-  .addr_i		  (EX_MEM.ALU_o),
+    .addr_i		  (EX_MEM.ALU_o),
 	.MemRead_i	(EX_MEM.M_o[1]),
 	.data_i		  (EX_MEM.WriteData_o),
 	.data_o		  ()
@@ -247,6 +247,18 @@ MUX32 MUX_Regdata(
 	.data2_i	(MEM_WB.MEM_o),
 	.select_i	(MEM_WB.WB_o[0]),
 	.data_o		()
+);
+
+//
+
+Hazard_Detection Hazard_Detection(
+    .IFIDRegRs_i    (inst[25:21]),
+    .IFIDRegRt_i    (inst[20:16]),
+    .IDEXMemRead_i  (ID_EX.M_o),
+    .IDEXRegRt_i    (ID_EX.RegRt_o),
+    .pcWrite_o      (),
+    .IFID_o         (),
+    .MuxSelect_o    ()
 );
 
 // WB
