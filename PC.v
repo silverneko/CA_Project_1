@@ -23,7 +23,7 @@ end
 
 always@(posedge clk_i) begin
     if(start_i & pcWrite_i)
-      pc_o = pc_i;
+      pc_o <= pc_i;
 end
 
 endmodule
