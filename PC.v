@@ -2,6 +2,7 @@ module PC
 (
     clk_i,
     start_i,
+    pcWrite_i,
     pc_i,
     pc_o
 );
@@ -9,6 +10,7 @@ module PC
 // Ports
 input               clk_i;
 input               start_i;
+input   pcWrite_i;
 input   [31:0]      pc_i;
 output  [31:0]      pc_o;
 
@@ -21,7 +23,8 @@ always@(posedge clk_i or negedge start_i) begin
         pc_o <= 32'b0;
     end
     else begin
-        pc_o <= pc_i;
+        if(pcWrite_i)
+          pc_o <= pc_i;
     end
 end
 

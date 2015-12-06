@@ -9,7 +9,6 @@ input               clk_i;
 input               start_i;
 
 wire	[31:0] inst_addr, inst;
-assign 	inst = Instruction_Memory.instr_o;
 
 wire	[4:0]	RSaddr, RTaddr, RDaddr;
 assign	RSaddr = inst[25:21];
@@ -26,14 +25,14 @@ assign 	PCSrc = Control.Branch_o & ALU.Zero_o;
 
 Control Control(
     .Op_i       (inst[31:26]),
+    .Jump_o		(), // only there three signals
+    .Branch_o	(), // don't need to be
+    .ExtOp_o	(), // pipelined
     .RegDst_o   (MUX_RegDst.select_i),
-	.Jump_o		(),
-	.Branch_o	(),
-	.MemRead_o	(),
-	.MemtoReg_o	(),
-	.ExtOp_o	(),
+    .MemRead_o	(),
+    .MemtoReg_o	(),
     .ALUOp_o    (ALU_Control.ALUOp_i),
-	.MemWrite_o	(),
+    .MemWrite_o	(),
     .ALUSrc_o   (MUX_ALUSrc.select_i),
     .RegWrite_o (Registers.RegWrite_i)
 );
@@ -53,7 +52,7 @@ MUX32 MUX_PC_Branch(
 );
 
 Adder Add_PC_Branch(
-	.data1_i	(pcAdd4),
+	.data1_i	(IF_ID.pc_o),
 	.data2_i	({Signed_Extend.data_o[29:0], 2'b00}),
 	.data_o		(Branch_addr)
 );
@@ -67,13 +66,14 @@ Adder Add_PC(
 PC PC(
     .clk_i      (clk_i),
     .start_i    (start_i),
+    .pcWrite_i  (/*  */),
     .pc_i       (pc_i),
     .pc_o       (inst_addr)
 );
 
 Instruction_Memory Instruction_Memory(
     .addr_i     (inst_addr), 
-    .instr_o    (/*  */)
+    .instr_o    ()
 );
 
 Registers Registers(
@@ -149,19 +149,27 @@ Fowarding_Unit Fowarding_Unit(
 
 IF_ID IF_ID(
     .Flush_i (/*  */),
-    .Clock_i (/*  */),
+    .Clock_i (clk_i),
     .IFID_i  (/*  */),
-    .PC4_i   (/*  */),
-    .Inst_i  (/*  */),
-    .PC4_o   (/*  */),
-    .Inst_o  (/*  */)
+    .PC4_i   (pcAdd4),
+    .Inst_i  (Instruction_Memory.instr_o),
+    .PC4_o   (/* I think this is for exception control module */),
+    .Inst_o  (inst)
+);
+
+MUX32 ID_EX_Flush(
+    .data1_i    ({Control.RegWrite_o, Control.MemtoReg_o, Control.MemRead_o, Control.MemWrite_o, Control.ALUSrc_o, Control.ALUOp_o, Control.RegDst_o}),
+                /* WB[1]               WB[0]               M[1]                M[0]                 EX[3]           EX[2:1]            EX[0] */ 
+    .data2_i    (32'b0),
+    .select_i   (/* Flush or not */),
+    .data_o     ({ID_EX.WB_i, ID_EX.M_i, ID_EX.EX_i})
 );
 
 ID_EX ID_EX(
-    .Clock_i     (/*  */),
-    .WB_i        (/*  */),
-    .M_i         (/*  */),
-    .EX_i        (/*  */),
+    .Clock_i     (clk_i),
+    .WB_i        (),
+    .M_i         (),
+    .EX_i        (),
     .Data1_i     (/*  */),
     .Data2_i     (/*  */),
     .Immediate_i (/*  */),
@@ -180,7 +188,7 @@ ID_EX ID_EX(
 );
 
 EX_MEM EX_MEM(
-    .Clock_i     (/*  */),
+    .Clock_i     (clk_i),
     .WB_i        (/*  */),
     .M_i         (/*  */),
     .ALU_i       (/*  */),
@@ -194,7 +202,7 @@ EX_MEM EX_MEM(
 );
 
 MEM_WB MEM_WB(
-    .Clock_i (/*  */),
+    .Clock_i (clk_i),
     .WB_i    (/*  */),
     .MEM_i   (/*  */),
     .ALU_i   (/*  */),

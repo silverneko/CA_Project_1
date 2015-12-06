@@ -22,19 +22,19 @@ module ID_EX(
 
 input Clock_i;
 input [1:0] WB_i;
-input [2:0] M_i;
+input [1:0] M_i;
 input [3:0] EX_i;
 input [4:0] RegRs_i, RegRt_i, RegRd_i;
 input [31:0] Data1_i, Data2_i, Immediate_i;
 
 output [1:0] WB_o;
-output [2:0] M_o;
+output [1:0] M_o;
 output [3:0] EX_o;
 output [4:0] RegRs_o, RegRt_o, RegRd_o;
 output [31:0] Data1_o, Data2_o, Immediate_o;
 
 reg [1:0] WB_o;
-reg [2:0] M_o;
+reg [1:0] M_o;
 reg [3:0] EX_o;
 reg [4:0] RegRs_o, RegRt_o, RegRd_o;
 reg [31:0] Data1_o, Data2_o, Immediate_o;
