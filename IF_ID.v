@@ -23,8 +23,8 @@ always@(posedge Clock_i)
 begin
     if(Flush_i)
     begin
-        PC4_o <= 0;
-        Inst_o <= 0;
+        PC4_o = 0;
+        Inst_o = 0;
     end
     else if(IFID_i)
     begin

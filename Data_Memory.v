@@ -1,6 +1,5 @@
 module Data_Memory
 (
-  Clock_i,
 	MemWrite_i,
     addr_i,
 	MemRead_i,
@@ -9,7 +8,6 @@ module Data_Memory
 );
 
 // Interface
-input   Clock_i;
 input	  MemWrite_i, MemRead_i;
 input   [31:0]      addr_i;
 input   [31:0] 		data_i;
@@ -20,7 +18,7 @@ reg		[31:0]		data_o;
 reg     [7:0]     memory  [0:31];
 
 
-always@(posedge Clock_i) begin
+always@(MemRead_i or MemWrite_i or data_i or addr_i) begin
 	if(MemWrite_i) begin
 		{memory[addr_i + 3], memory[addr_i + 2], memory[addr_i + 1], memory[addr_i]} = data_i;
 	end

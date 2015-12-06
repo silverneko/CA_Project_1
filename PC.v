@@ -20,11 +20,11 @@ reg     [31:0]      pc_o;
 
 always@(posedge clk_i or negedge start_i) begin
     if(~start_i) begin
-        pc_o <= 32'b0;
+        pc_o = 32'b0;
     end
     else begin
         if(pcWrite_i)
-          pc_o <= pc_i;
+          pc_o = pc_i;
     end
 end
 
