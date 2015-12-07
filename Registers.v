@@ -32,9 +32,9 @@ always@(negedge clk_i) begin
 end
 
 // Write Data   
-always@(posedge clk_i) begin
+always@(RDaddr_i or RDdata_i or RegWrite_i) begin
     if(RegWrite_i)
-        register[RDaddr_i] <= RDdata_i;
+        register[RDaddr_i] = RDdata_i;
 end
    
 endmodule 
