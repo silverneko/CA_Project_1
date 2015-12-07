@@ -32,7 +32,9 @@ always@(negedge clk_i) begin
 end
 
 // Write Data   
-always@(RegWrite_i or RDaddr_i or RDdata_i) begin
+always@(posedge clk_i) begin
+  #1
+  // wait one ps to let pipeline latch propogate data
   if(RegWrite_i)
     register[RDaddr_i] = RDdata_i;
 end

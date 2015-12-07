@@ -20,7 +20,9 @@ reg		[31:0]		data_o;
 reg     [7:0]     memory  [0:31];
 
 
-always@(MemRead_i or MemWrite_i or data_i or addr_i) begin
+always@(posedge clk_i) begin
+  #1
+  // wait one ps to let pipeline latch propogate data
 	if(MemWrite_i) begin
 		{memory[addr_i + 3], memory[addr_i + 2], memory[addr_i + 1], memory[addr_i]} = data_i;
 	end
