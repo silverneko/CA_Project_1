@@ -233,6 +233,7 @@ EX_MEM EX_MEM(
 
 // MEM
 Data_Memory Data_Memory(
+  .clk_i      (clk_i),
 	.MemWrite_i	(EX_MEM.M_o[0]),
   .addr_i		  (EX_MEM.ALU_o),
 	.MemRead_i	(EX_MEM.M_o[1]),

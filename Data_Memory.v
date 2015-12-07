@@ -1,5 +1,6 @@
 module Data_Memory
 (
+  clk_i,
 	MemWrite_i,
     addr_i,
 	MemRead_i,
@@ -8,6 +9,7 @@ module Data_Memory
 );
 
 // Interface
+input   clk_i;
 input	  MemWrite_i, MemRead_i;
 input   [31:0]      addr_i;
 input   [31:0] 		data_i;
