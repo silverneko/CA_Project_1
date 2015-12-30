@@ -120,9 +120,20 @@ assign	cache_dirty  = write_hit;
 // tag comparator
 //!!! add you code here!  (hit=...?,  r_hit_data=...?)
 	
+wire  [31:0] l_hit_data[0:7];
+assign  l_hit_data[0] = r_hit_data[31:0];
+assign  l_hit_data[1] = r_hit_data[63:32];
+assign  l_hit_data[2] = r_hit_data[95:64];
+assign  l_hit_data[3] = r_hit_data[127:96];
+assign  l_hit_data[4] = r_hit_data[159:128];
+assign  l_hit_data[5] = r_hit_data[191:160];
+assign  l_hit_data[6] = r_hit_data[223:192];
+assign  l_hit_data[7] = r_hit_data[255:224];
+
 // read data :  256-bit to 32-bit
 always@(p1_offset or r_hit_data) begin
-	//!!! add you code here! (p1_data=...?)
+	// Consider this done (p1_data=...?)
+  p1_data <= l_hit_data[p1_offset[4:2]];
 end
 
 
