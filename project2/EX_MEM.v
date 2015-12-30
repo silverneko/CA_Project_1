@@ -1,4 +1,5 @@
 module EX_MEM(
+    stall_i,
     Clock_i,
     WB_i,
     M_i,
@@ -12,6 +13,7 @@ module EX_MEM(
     WriteData_o
 );
 
+input				   stall_i;
 input Clock_i;
 input [1:0] WB_i;
 input [1:0] M_i;
@@ -38,11 +40,14 @@ end
 
 always@(posedge Clock_i)
 begin
+    if(stall_i) begin
+    end else begin
     WB_o <= WB_i;
     M_o <= M_i;
     RegRd_o <= RegRd_i;
     ALU_o <= ALU_i;
     WriteData_o <= WriteData_i;
+    end
 end
 
 endmodule

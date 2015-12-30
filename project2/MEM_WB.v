@@ -1,4 +1,5 @@
 module MEM_WB(
+    stall_i,
     Clock_i,
     WB_i,
     MEM_i,
@@ -10,6 +11,7 @@ module MEM_WB(
     RegRd_o
 );
 
+input				   stall_i;
 input Clock_i;
 input [1:0] WB_i;
 input [4:0] RegRd_i;
@@ -32,10 +34,13 @@ end
 
 always@(posedge Clock_i)
 begin
+    if(stall_i) begin
+    end else begin
     WB_o <= WB_i;
     RegRd_o <= RegRd_i;
     MEM_o <= MEM_i;
     ALU_o <= ALU_i;
+    end
 end
 
 endmodule

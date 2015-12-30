@@ -74,6 +74,7 @@ Adder Add_PC(
 // IF
 
 IF_ID IF_ID(
+    .stall_i (dcache.p1_stall_o),
     .Flush_i (MUX_PC_Branch.select_i | MUX_PC_Jump.select_i),
     .Clock_i (clk_i),
     .IFID_i  (Hazard_Detection.IFID_o),
@@ -126,6 +127,7 @@ assign  {ID_EX.WB_i, ID_EX.M_i, ID_EX.EX_i} = ID_EX_Flush.data_o[7:0];
 // ID
 
 ID_EX ID_EX(
+    .stall_i (dcache.p1_stall_o),
     .Clock_i     (clk_i),
     .WB_i        (),
     .M_i         (),
@@ -217,6 +219,7 @@ MUX5 MUX_RegDst(
 // EX
 
 EX_MEM EX_MEM(
+    .stall_i (dcache.p1_stall_o),
     .Clock_i     (clk_i),
     .WB_i        (ID_EX.WB_o),
     .M_i         (ID_EX.M_o),
@@ -231,16 +234,6 @@ EX_MEM EX_MEM(
 );
 
 // MEM
-/*
-Data_Memory Data_Memory(
-  .clk_i      (clk_i),
-	.MemWrite_i	(EX_MEM.M_o[0]),
-  .addr_i		  (EX_MEM.ALU_o),
-	.MemRead_i	(EX_MEM.M_o[1]),
-	.data_i		  (EX_MEM.WriteData_o),
-	.data_o		  ()
-);
-*/
 //data cache
 dcache_top dcache
 (
@@ -257,16 +250,17 @@ dcache_top dcache
 	.mem_write_o(mem_write_o), 
 	
 	// to CPU interface	
-	.p1_data_i(), 
-	.p1_addr_i(), 	
-	.p1_MemRead_i(), 
-	.p1_MemWrite_i(), 
+	.p1_data_i(EX_MEM.WriteData_o), 
+	.p1_addr_i(EX_MEM.ALU_o), 	
+	.p1_MemRead_i(EX_MEM.M_o[1]), 
+	.p1_MemWrite_i(EX_MEM.M_o[0]), 
 	.p1_data_o(), 
 	.p1_stall_o()
 );
 // MEM
 
 MEM_WB MEM_WB(
+    .stall_i (dcache.p1_stall_o),
     .Clock_i (clk_i),
     .WB_i    (EX_MEM.WB_o),
     .MEM_i   (dcache.p1_data_o),
@@ -296,7 +290,7 @@ PC PC
 	.clk_i(clk_i),
 	.rst_i(rst_i),
 	.start_i(start_i),
-	.stall_i(),
+	.stall_i(dcache.p1_stall_o),
 	.pcEnable_i(Hazard_Detection.pcWrite_o),
 	.pc_i(pc_i),
 	.pc_o()

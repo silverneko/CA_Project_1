@@ -1,4 +1,5 @@
 module IF_ID(
+    stall_i,
     Flush_i,
     Clock_i,
     IFID_i,
@@ -8,6 +9,7 @@ module IF_ID(
     Inst_o
 );
 
+input				   stall_i;
 input Flush_i, Clock_i, IFID_i;
 input [31:0] PC4_i, Inst_i;
 output [31:0] PC4_o, Inst_o;
@@ -21,6 +23,8 @@ end
 
 always@(posedge Clock_i)
 begin
+    if(stall_i) begin
+    end else
     if(Flush_i)
     begin
         PC4_o = 0;

@@ -1,4 +1,5 @@
 module ID_EX(
+    stall_i,
     Clock_i,
     WB_i,
     M_i,
@@ -20,6 +21,7 @@ module ID_EX(
     RegRd_o
 );
 
+input				   stall_i;
 input Clock_i;
 input [1:0] WB_i;
 input [1:0] M_i;
@@ -53,7 +55,8 @@ end
 
 always@(posedge Clock_i)
 begin
-
+    if(stall_i) begin
+    end else begin
     WB_o <= WB_i;
     M_o <= M_i;
     EX_o <= EX_i;
@@ -63,6 +66,7 @@ begin
     RegRs_o <= RegRs_i;
     RegRt_o <= RegRt_i;
     RegRd_o <= RegRd_i;
+    end
 end
 
 endmodule
