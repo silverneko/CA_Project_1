@@ -22,7 +22,7 @@ always #(`CYCLE_TIME/2) Clk = ~Clk;
 
 CPU CPU(
 	.clk_i  (Clk),
-    .rst_i  (Reset),
+  .rst_i  (Reset),
 	.start_i(Start),
 	
 	.mem_data_i(mem_cpu_data), 
