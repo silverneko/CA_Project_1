@@ -1,4 +1,4 @@
-# CA_Project_1
+# CA_Projects
 
 - b02902125	吳哲宇
 - b03902082	江懿友
