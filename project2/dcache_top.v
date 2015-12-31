@@ -121,7 +121,7 @@ assign	cache_dirty  = write_hit;
 //!!! add you code here!  (hit=...?,  r_hit_data=...?)
 
 assign hit = p1_tag == sram_tag;
-assign r_hit_data = sram_cache_data;
+assign r_hit_data = (hit) ? sram_cache_data : mem_data_i;
 	
 wire  [31:0] l_hit_data[0:7];
 assign  l_hit_data[0] = r_hit_data[31:0];
@@ -174,18 +174,20 @@ always@(posedge clk_i or negedge rst_i) begin
 				end
 			end
 			STATE_MISS: begin
+				mem_enable <= 1'b1;
 				if(sram_dirty) begin		//write back if dirty
-	                //!!! add you code here! 
+					mem_write <= 1'b1;
+					write_back <= 1'b1;
 					state <= STATE_WRITEBACK;
 				end
 				else begin					//write allocate: write miss = read miss + write hit; read miss = read miss + read hit
-	                //!!! add you code here! 
+					cache_we <= 1'b1;
 					state <= STATE_READMISS;
 				end
 			end
 			STATE_READMISS: begin
 				if(mem_ack_i) begin			//wait for data memory acknowledge
-	                //!!! add you code here! 
+	                		cache_we <= 1'b0;
 					state <= STATE_READMISSOK;
 				end
 				else begin
@@ -193,12 +195,14 @@ always@(posedge clk_i or negedge rst_i) begin
 				end
 			end
 			STATE_READMISSOK: begin			//wait for data memory acknowledge
-	                //!!! add you code here! 
+	                	mem_enable <= 1'b0;
 				state <= STATE_IDLE;
 			end
 			STATE_WRITEBACK: begin
 				if(mem_ack_i) begin			//wait for data memory acknowledge
-	                //!!! add you code here! 
+					mem_write <= 1'b0;
+					write_back <= 1'b0;
+					cache_we <= 1'b1;
 					state <= STATE_READMISS;
 				end
 				else begin
