@@ -23,7 +23,7 @@ Cycle:          68, Write Hit , Address: 00000414, Write Data: 00005678
 Cycle:          70, Write Hit , Address: 00000418, Write Data: 00006789
 Cycle:          72, Write Hit , Address: 0000041c, Write Data: 00007890
 Cycle:          73, Read Miss , Address: 00000000, Read Data : 00000000 (Write Back!)
-Cycle:          95, Read Hit  , Address: 00000004, Read Data : xxxxxxxx
+Cycle:          95, Read Hit  , Address: 00000004, Read Data : 00001111
 Cycle:          96, Read Hit  , Address: 00000008, Read Data : 00002222
 Cycle:          97, Read Hit  , Address: 0000000c, Read Data : 00003333
 Cycle:          98, Read Hit  , Address: 00000010, Read Data : 00004444
@@ -31,7 +31,7 @@ Cycle:          99, Read Hit  , Address: 00000014, Read Data : 00005555
 Cycle:         100, Read Hit  , Address: 00000018, Read Data : 00006666
 Cycle:         101, Read Hit  , Address: 0000001c, Read Data : 00007777
 Cycle:         102, Read Hit  , Address: 00000020, Read Data : 00000888
-Cycle:         103, Read Hit  , Address: 00000024, Read Data : 20000111
+Cycle:         103, Read Hit  , Address: 00000024, Read Data : 00000999
 Cycle:         104, Read Hit  , Address: 00000028, Read Data : 00000aaa
 Cycle:         105, Read Hit  , Address: 0000002c, Read Data : 00000bbb
 Cycle:         106, Read Hit  , Address: 00000030, Read Data : 00000ccc

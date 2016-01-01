@@ -136,7 +136,7 @@ assign  l_hit_data[7] = r_hit_data[255:224];
 // read data :  256-bit to 32-bit
 always@(p1_offset or r_hit_data) begin
 	// Consider this done (p1_data=...?)
-	p1_data <= l_hit_data[p1_offset[4:2]];
+	p1_data = l_hit_data[p1_offset[4:2]];
 end
 
 
@@ -144,14 +144,14 @@ end
 always@(p1_offset or r_hit_data or p1_data_i) begin
 	//!!! add you code here! (w_hit_data=...?)
         if(p1_MemWrite_i) begin
-		w_hit_data[31:0] <= (p1_offset == 0) ? p1_data_i : r_hit_data[31:0];
-		w_hit_data[63:32] <= (p1_offset == 4) ? p1_data_i : r_hit_data[63:3];
-		w_hit_data[95:64] <= (p1_offset == 8) ? p1_data_i : r_hit_data[95:64];
-		w_hit_data[127:96] <= (p1_offset == 12) ? p1_data_i : r_hit_data[127:96];
-		w_hit_data[159:128] <= (p1_offset == 16) ? p1_data_i : r_hit_data[159:128];
-		w_hit_data[191:160] <= (p1_offset == 20) ? p1_data_i : r_hit_data[191:160];
-		w_hit_data[223:192] <= (p1_offset == 24) ? p1_data_i : r_hit_data[223:192];
-		w_hit_data[255:224] <= (p1_offset == 28) ? p1_data_i : r_hit_data[255:224];
+		w_hit_data[31:0] = (p1_offset == 0) ? p1_data_i : r_hit_data[31:0];
+		w_hit_data[63:32] = (p1_offset == 4) ? p1_data_i : r_hit_data[63:32];
+		w_hit_data[95:64] = (p1_offset == 8) ? p1_data_i : r_hit_data[95:64];
+		w_hit_data[127:96] = (p1_offset == 12) ? p1_data_i : r_hit_data[127:96];
+		w_hit_data[159:128] = (p1_offset == 16) ? p1_data_i : r_hit_data[159:128];
+		w_hit_data[191:160] = (p1_offset == 20) ? p1_data_i : r_hit_data[191:160];
+		w_hit_data[223:192] = (p1_offset == 24) ? p1_data_i : r_hit_data[223:192];
+		w_hit_data[255:224] = (p1_offset == 28) ? p1_data_i : r_hit_data[255:224];
 	end
 end
 
