@@ -120,7 +120,7 @@ assign	cache_dirty  = write_hit;
 // tag comparator
 //!!! add you code here!  (hit=...?,  r_hit_data=...?)
 
-assign hit = p1_tag == sram_tag;
+assign hit = sram_valid & (p1_tag == sram_tag);
 assign r_hit_data = (hit) ? sram_cache_data : mem_data_i;
 	
 wire  [31:0] l_hit_data[0:7];
