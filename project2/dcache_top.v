@@ -143,14 +143,16 @@ end
 // write data :  32-bit to 256-bit
 always@(p1_offset or r_hit_data or p1_data_i) begin
 	//!!! add you code here! (w_hit_data=...?)
-	w_hit_data[31:0] <= (p1_offset == 0) ? p1_data_i : r_hit_data[31:0];
-	w_hit_data[63:32] <= (p1_offset == 4) ? p1_data_i : r_hit_data[63:3];
-	w_hit_data[95:64] <= (p1_offset == 8) ? p1_data_i : r_hit_data[95:64];
-	w_hit_data[127:96] <= (p1_offset == 12) ? p1_data_i : r_hit_data[127:96];
-	w_hit_data[159:128] <= (p1_offset == 16) ? p1_data_i : r_hit_data[159:128];
-	w_hit_data[191:160] <= (p1_offset == 20) ? p1_data_i : r_hit_data[191:160];
-	w_hit_data[223:192] <= (p1_offset == 24) ? p1_data_i : r_hit_data[223:192];
-	w_hit_data[255:224] <= (p1_offset == 28) ? p1_data_i : r_hit_data[255:224];
+        if(p1_MemWrite_i) begin
+		w_hit_data[31:0] <= (p1_offset == 0) ? p1_data_i : r_hit_data[31:0];
+		w_hit_data[63:32] <= (p1_offset == 4) ? p1_data_i : r_hit_data[63:3];
+		w_hit_data[95:64] <= (p1_offset == 8) ? p1_data_i : r_hit_data[95:64];
+		w_hit_data[127:96] <= (p1_offset == 12) ? p1_data_i : r_hit_data[127:96];
+		w_hit_data[159:128] <= (p1_offset == 16) ? p1_data_i : r_hit_data[159:128];
+		w_hit_data[191:160] <= (p1_offset == 20) ? p1_data_i : r_hit_data[191:160];
+		w_hit_data[223:192] <= (p1_offset == 24) ? p1_data_i : r_hit_data[223:192];
+		w_hit_data[255:224] <= (p1_offset == 28) ? p1_data_i : r_hit_data[255:224];
+	end
 end
 
 
@@ -181,13 +183,12 @@ always@(posedge clk_i or negedge rst_i) begin
 					state <= STATE_WRITEBACK;
 				end
 				else begin					//write allocate: write miss = read miss + write hit; read miss = read miss + read hit
-					cache_we <= 1'b1;
 					state <= STATE_READMISS;
 				end
 			end
 			STATE_READMISS: begin
 				if(mem_ack_i) begin			//wait for data memory acknowledge
-	                		cache_we <= 1'b0;
+	                		cache_we <= 1'b1;
 					state <= STATE_READMISSOK;
 				end
 				else begin
@@ -196,13 +197,13 @@ always@(posedge clk_i or negedge rst_i) begin
 			end
 			STATE_READMISSOK: begin			//wait for data memory acknowledge
 	                	mem_enable <= 1'b0;
+				cache_we <= 1'b0;
 				state <= STATE_IDLE;
 			end
 			STATE_WRITEBACK: begin
 				if(mem_ack_i) begin			//wait for data memory acknowledge
 					mem_write <= 1'b0;
 					write_back <= 1'b0;
-					cache_we <= 1'b1;
 					state <= STATE_READMISS;
 				end
 				else begin
